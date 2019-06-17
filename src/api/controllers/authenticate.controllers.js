@@ -60,9 +60,16 @@ module.exports = {
     },
     update: async (req, res, next) => {
         try {
-            const { password, fullName, mobile } = req.body;
-            const update = await authenticateServices.registupdateUserer(req.session.user.id, password, fullName, mobile);
+            const { password, fullName, mobile, id } = req.body;
+            const user = await authenticateServices.getUserById(req.session.user.id);
+            if (user.type === 1 && id !== undefined) {
+                const update = await authenticateServices.updateUser(id, password, fullName, mobile);
+            }
+            else {
+                const update = await authenticateServices.updateUser(req.session.user.id, password, fullName, mobile);
+            }
             return successHandler(res);
+            
         }
         catch (e) {
             console.log(e);

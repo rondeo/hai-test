@@ -21,6 +21,6 @@ module.exports = {
         });
     },
     getAll: async () => {
-        return await context('hai-user').where({ type: 0 }).select('id', 'isOnline', 'name');
+        return await context('hai-user').where({ type: 0 }).select('id', 'isOnline', 'name', 'mobile', 'username');
     }
 }

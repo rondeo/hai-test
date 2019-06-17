@@ -305,3 +305,12 @@ select.browser-default {
     border-bottom: none;
   }
 }
+
+.card-body {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.card .active {
+  background-color: antiquewhite
+}

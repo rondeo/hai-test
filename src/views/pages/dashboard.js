@@ -55,9 +55,9 @@ class Dashboard extends Component {
                 </ul>
                 <div className="">
                     {this.state.users.map(item => {
-                        return <div key={item.id} class="card">
-                            <div class="card-body">{item.name}</div>
-                            <div class="card-body">{item.isOnline === 1 ? "Online" : "Offline"}</div>
+                        return <div key={item.id} className="card">
+                            <div className="card-body">{item.name}</div>
+                            <div className="card-body">{item.isOnline === 1 ? "Online" : "Offline"}</div>
                         </div>
                     })}
                 </div>

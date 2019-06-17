@@ -17,11 +17,12 @@ export default {
     });
     return await response.json();
   },
-  update: async (username, password, fullName, mobile) => {
+  update: async (password, fullName, mobile, id) => {
     const response = await baseService.put('/api/accounts', {
       password: password,
       fullName: fullName,
-      mobile: mobile
+      mobile: mobile,
+      id: id
     });
     return await response.json();
   },
