@@ -17,6 +17,14 @@ export default {
     });
     return await response.json();
   },
+  update: async (username, password, fullName, mobile) => {
+    const response = await baseService.put('/api/accounts', {
+      password: password,
+      fullName: fullName,
+      mobile: mobile
+    });
+    return await response.json();
+  },
   checkToken: async () => {
     const response = await baseService.get('/api/accounts/token');
     return await response.json();

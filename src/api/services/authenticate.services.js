@@ -53,6 +53,16 @@ module.exports = {
         }
         return false;
     },
+    updateUser: async (id, password, fullName, mobile) => {
+        let object = {
+            name: fullName,
+            mobile: mobile
+        }
+        if (password !== null & password !== undefined) {
+            object.password = md5(password);
+        }
+        return await userModel.update(id, object);
+    },
     verifyToken: async (token) => {
         const payload = jwt.verify(token, tokenSecret, (err, decode) => decode);
         if (payload) {

@@ -49,19 +49,21 @@ app
     });
 
     server.get('/login', (req, res) => {
-      console.log(req.sessionID);
       const actualPage = '/login';
       app.render(req, res, actualPage)
     });
 
     server.get('/dashboard', (req, res) => {
-      console.log(req.sessionID);
       const actualPage = '/dashboard';
       app.render(req, res, actualPage)
     });
 
+    server.get('/profile', (req, res) => {
+      const actualPage = '/profile';
+      app.render(req, res, actualPage)
+    });
+
     server.get('/register', (req, res) => {
-      console.log(req.sessionID);
       const actualPage = '/register';
       app.render(req, res, actualPage)
     });

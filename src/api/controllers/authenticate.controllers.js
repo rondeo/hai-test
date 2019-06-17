@@ -58,6 +58,20 @@ module.exports = {
             });
         }
     },
+    update: async (req, res, next) => {
+        try {
+            const { password, fullName, mobile } = req.body;
+            const update = await authenticateServices.registupdateUserer(req.session.user.id, password, fullName, mobile);
+            return successHandler(res);
+        }
+        catch (e) {
+            console.log(e);
+            return errorHandler(res, {
+                code: 500,
+                message: "an error occured, please try again"
+            });
+        }
+    },
     /**
      * 
      * @api {POST} /accounts/service login

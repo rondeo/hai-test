@@ -9,6 +9,7 @@ const socket = openSocket.connect("http://localhost:1002");
 class Dashboard extends Component {
     constructor(props) {
         super(props);
+        this.getUsers = this.getUsers.bind(this);
         this.state = {
             user: null,
             users: []
@@ -17,10 +18,10 @@ class Dashboard extends Component {
     getUsers = async () => {
         const users = await authenticateService.getAll();
         this.setState({ users: users.data });
-
+        const self = this;
         socket.on("users", function (data) {
             console.log("runnning", data);
-            this.setState({users: data})
+            self.setState({ users: data })
         });
     }
     componentDidMount = async () => {
@@ -48,8 +49,9 @@ class Dashboard extends Component {
                 <ul className="navigation">
                     {this.state.user !== null && this.state.user.type === 1 ?
                         <li><a href="/user-management">User Management</a></li> :
-                        <li><a href="/profile">Update Profile</a></li>
+                        null
                     }
+                    <li><a href="/profile">Update Profile</a></li>
                 </ul>
                 <div className="">
                     {this.state.users.map(item => {
